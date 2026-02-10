@@ -1,4 +1,4 @@
-class Task {
+export default class Task {
 	constructor(title, description, dueDate, priority) {
 		this._id = crypto.randomUUID();
 		this._title = title;
@@ -84,5 +84,3 @@ class Task {
 		return (task);
 	}
 }
-
-export default Task;
