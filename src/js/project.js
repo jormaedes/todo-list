@@ -1,6 +1,6 @@
 import Task from './task.js';
 
-class Project {
+export class Project {
 	constructor(name) {
 		this._id = crypto.randomUUID();
 		this._name = name;
