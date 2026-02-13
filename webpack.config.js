@@ -1,12 +1,12 @@
-import path from "node:path";
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const path = require('node:path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-export default {
+module.exports = {
 	mode: 'development',
 	entry: './src/index.js',
 	output: {
 		filename: 'main.js',
-		path: path.resolve(import.meta.dirname, 'dist'),
+		path: path.resolve(__dirname, 'dist'),
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -26,7 +26,7 @@ export default {
 			{
 				test: /\.html$/i,
 				use: ['html-loader'],
-			}
+			},
 		],
 	},
 };
