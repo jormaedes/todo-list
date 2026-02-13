@@ -1,0 +1,39 @@
+:root.light {
+	--bg-primary: #FFFFFF;
+	--bg-secondary: #F5F5F5;
+	--bg-task: #FFFFFF;
+	--bg-task-completed: #E8E8E8;
+	--bg-hover: #E8E8E8;
+	--bg-selected: #E3F2FD;
+
+	--text-primary: #1A1A1A;
+	--text-secondary: #666666;
+	--text-muted: #999999;
+
+	--border-color: #E0E0E0;
+	--divider: #D0D0D0;
+
+	--accent-blue: #4A90E2;
+	--accent-blue-hover: #357ABD;
+	--checkbox-active: #5BA3F5;
+}
+
+:root.dark {
+	--bg-primary: #1E1E1E;
+	--bg-secondary: #0D0D0D;
+	--bg-task: #2A2A2A;
+	--bg-task-completed: #3A3A3A;
+	--bg-hover: #2A2A2A;
+	--bg-selected: #1C3A52;
+
+	--text-primary: #E8E8E8;
+	--text-secondary: #A0A0A0;
+	--text-muted: #6B6B6B;
+
+	--border-color: #3A3A3A;
+	--divider: #2A2A2A;
+
+	--accent-blue: #4A90E2;
+	--accent-blue-hover: #5BA3F5;
+	--checkbox-active: #5BA3F5;
+}
