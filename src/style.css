@@ -1,4 +1,6 @@
-:root.light {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root .light {
 	--bg-primary: #FFFFFF;
 	--bg-secondary: #F5F5F5;
 	--bg-task: #FFFFFF;
@@ -18,7 +20,7 @@
 	--checkbox-active: #5BA3F5;
 }
 
-:root.dark {
+:root .dark {
 	--bg-primary: #1E1E1E;
 	--bg-secondary: #0D0D0D;
 	--bg-task: #2A2A2A;
@@ -36,4 +38,100 @@
 	--accent-blue: #4A90E2;
 	--accent-blue-hover: #5BA3F5;
 	--checkbox-active: #5BA3F5;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto';
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	min-height: 100vh;
+	position: relative;
+	color: var(--text-primary);
+}
+
+#sidebar {
+	background: var(--bg-secondary);
+	padding: 20px;
+}
+
+#sidebar-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#main-sidebar-content {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.project-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	padding: 8px 16px;
+	border-radius: 8px;
+}
+
+.project-item:hover {
+	background: var(--divider);
+}
+
+.active-project {
+	background: var(--divider);
+	color: var(--accent-blue);
+}
+
+#projects-section {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.project-list,
+#general-section {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.project-item > .project-name {
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.project-item > .qtd-project {
+	background: var(--bg-primary);
+	padding: 2px 6px;
+	border-radius: 10px;
+	font-size: 12px;
+	color: var(--accent-blue);
+}
+
+#main-content {
+	grid-column: 2/3;
+}
+
+#add-project-btn {
+	border: none;
+	cursor: pointer;
+	background: transparent;
+	color: var(--accent-blue);
+	font-size: 16px;
+	padding: 8px 16px;
+	border-radius: 8px;
+}
+
+#add-project-btn:hover {
+	background: var(--checkbox-active);
+	color: var(--text-primary);
 }
