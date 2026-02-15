@@ -90,7 +90,7 @@ body {
 }
 
 .active-project {
-	background: var(--divider);
+	background: var(--bg-selected);
 	color: var(--accent-blue);
 }
 
@@ -108,7 +108,7 @@ body {
 }
 
 .project-item > .project-name {
-	font-weight: 400;
+	font-weight: 500;
 	font-size: 16px;
 }
 
@@ -118,11 +118,11 @@ body {
 }
 
 .project-item > .qtd-project {
-	background: var(--bg-primary);
+	background: var(--bg-hover);
 	padding: 2px 6px;
 	border-radius: 10px;
 	font-size: 12px;
-	color: var(--accent-blue);
+	color: var(--text-primary);
 }
 
 #add-project-btn {
@@ -163,6 +163,74 @@ body {
 
 #main-content {
 	grid-column: 2/3;
-	background: var(--accent-blue);
+	background: var(--bg-primary);
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+#main-content-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#add-task-btn {
+	padding: 8px 16px;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	cursor: pointer;
+	color: var(--text-primary);
+	background: var(--accent-blue);
+	font-weight: 500;
+}
+
+#add-task-btn:hover {
+	background: var(--accent-blue-hover);
+}
+
+#tasks-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.task-card {
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+	border-radius: 8px;
+	border: 1px solid var(--border-color);
+	gap: 20px;
+	justify-content: space-between;
+}
+
+.task-card-left {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.task-date {
+	background: var(--bg-secondary);
+	padding: 5px 10px;
+	border-radius: 20px;
+	font-size: 13px;
+	color: var(--text-secondary);
+}
+
+.task-card.finished {
+	background: var(--bg-task-completed);
+}
+
+.task-card.finished {
+	opacity: .6;
+}
+
+.task-card.finished .task-title,
+.task-card.finished .task-description{
+	text-decoration: line-through;
 }

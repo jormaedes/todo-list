@@ -4,38 +4,90 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 	<title>To-do list app</title>
 </head>
 
 <body class="light">
 	<aside id="sidebar">
-		<h1 id="logo">To-Do List</h1>
-		<section id="general-section">
-			<h2 class="section-title">General</h2>
-			<div class="project-item">Inbox</div>
-			<div class="project-item">Today</div>
-		</section>
+		<section id="sidebar-container">
+			<section id="main-sidebar-content">
+				<h1 id="logo">To-Do List</h1>
+				<section id="general-section">
+					<h2 class="section-title">General</h2>
+					<div class="project-item">
+						<i class="ri-inbox-fill"></i>
+						Inbox
+					</div>
+					<div class="project-item">
+						<i class="ri-calendar-fill"></i>
+						Today
+					</div>
+				</section>
 
-		<section id="projects-section">
-			<h2 class="section-title">Projects</h2>
-			<div class="project-list">
-				<div class="project-item">
-					<h3 class="project-name">Default</h3>
-					<span class="qtd-project">0</span>
-				</div>
-				<div class="project-item">
-					<h3 class="project-name">Other project</h3>
-					<span class="qtd-project">0</span>
-				</div>
-			</div>
-			<button id="add-project-btn">Add Project</button>
-		</section>
-
-		<section id="settings-section">
-			<button id="toggle-theme-btn">Toggle Theme</button>
-			<button id="about-btn">About</button>
+				<section id="projects-section">
+					<h2 class="section-title">Projects</h2>
+					<div class="project-list">
+						<div class="project-item active-project">
+							<h3 class="project-name">Default</h3>
+							<span class="qtd-project">1</span>
+						</div>
+						<div class="project-item">
+							<h3 class="project-name">Other project</h3>
+							<span class="qtd-project">17</span>
+						</div>
+					</div>
+					<button id="add-project-btn"> + Add Project</button>
+				</section>
+			</section>
+			<section id="settings-section">
+				<button id="toggle-theme-btn">
+					<i id="icon-toggle-theme" class="ri-moon-fill"></i> 
+					<!-- <i class="ri-sun-fill"></i>  quando for pressionado-->
+					Toggle Theme
+				</button>
+				<button id="about-btn">
+					<i class="ri-information-fill"></i>
+					About
+				</button>
+			</section>
 		</section>
 	</aside>
+	<main id="main-content">
+		<section id="main-content-header">
+			<h2 id="main-title">Today</h2>
+			<button id="add-task-btn">+ Add Task</button>
+		</section>
+		<section id="tasks-container">
+			<div class="task-card" id="taskId">
+				<div class="task-card-left">
+					<input type="checkbox">
+					<div class="task-content">
+						<h3 class="task-title">Task 1</h3>
+						<p class="task-description">task1 description</p>
+					</div>
+				</div>
+				<span class="task-date">
+					<i class="ri-calendar-fill"></i>
+					Mar 15, 2026
+				</span>
+			</div>
+
+			<div class="task-card finished" id="taskId">
+				<div class="task-card-left">
+					<input type="checkbox">
+					<div class="task-content">
+						<h3 class="task-title">Task 1</h3>
+						<p class="task-description">task1 description</p>
+					</div>
+				</div>
+				<span class="task-date">
+					<i class="ri-calendar-fill"></i>
+					Mar 15, 2026
+				</span>
+			</div>
+		</section>
+	</main>
 </body>
 
 </html>
