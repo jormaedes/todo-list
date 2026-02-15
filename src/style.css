@@ -234,3 +234,42 @@ body {
 .task-card.finished .task-description{
 	text-decoration: line-through;
 }
+
+dialog#about-dialog {
+	margin: auto;
+	border: none;
+	background: var(--bg-primary);
+	color: var(--text-primary);
+	border-radius: 10px;
+}
+
+.about-dialog-container {
+	display: flex;
+	gap: 20px;
+	padding: 20px;
+	flex-direction: column;
+	text-align: center;
+}
+
+#copyright p > a {
+	color: var(--accent-blue);
+	text-decoration: none;
+}
+
+#copyright p > a:hover {
+	color: var(--text-secondary);
+}
+
+.about-dialog-container #close-info-btn {
+	background: var(--bg-selected);
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	font-size: 18px;
+	border-radius: 8px;
+	color: var(--text-primary);
+}
+
+.about-dialog-container #close-info-btn:hover {
+	background: var(--bg-secondary);
+}

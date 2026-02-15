@@ -1,6 +1,7 @@
 import "./style.css";
 
 const toggleThemeBtn = document.querySelector('#toggle-theme-btn');
+const aboutBtn = document.querySelector('#about-btn');
 
 toggleThemeBtn.addEventListener('click', ()=>{
 	const root = document.querySelector('body');
@@ -18,4 +19,9 @@ toggleThemeBtn.addEventListener('click', ()=>{
 	root.classList.add('dark');
 	icon.classList.remove('ri-moon-fill');
 	icon.classList.add('ri-sun-fill');
+});
+
+aboutBtn.addEventListener('click', ()=>{
+	const dialogAbout = document.querySelector('#about-dialog');
+	dialogAbout.showModal();
 });
