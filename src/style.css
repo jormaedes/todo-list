@@ -109,16 +109,17 @@ body {
 	font-size: 16px;
 }
 
+#general-section .project-item {
+	justify-content: flex-start;
+	gap: 10px;
+}
+
 .project-item > .qtd-project {
 	background: var(--bg-primary);
 	padding: 2px 6px;
 	border-radius: 10px;
 	font-size: 12px;
 	color: var(--accent-blue);
-}
-
-#main-content {
-	grid-column: 2/3;
 }
 
 #add-project-btn {
@@ -134,4 +135,29 @@ body {
 #add-project-btn:hover {
 	background: var(--checkbox-active);
 	color: var(--text-primary);
+}
+
+#settings-section {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#settings-section button {
+	text-align: left;
+	border-radius: 8px;
+	border: none;
+	padding: 8px;
+	font-size: 16px;
+	cursor: pointer;
+	background: transparent;
+	color: var(--text-primary);
+}
+
+#settings-section button:hover {
+	background: var(--text-muted);
+}
+
+#main-content {
+	grid-column: 2/3;
 }
