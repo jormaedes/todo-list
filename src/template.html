@@ -7,8 +7,35 @@
 	<title>To-do list app</title>
 </head>
 
-<body>
-	
+<body class="light">
+	<aside id="sidebar">
+		<h1 id="logo">To-Do List</h1>
+		<section id="general-section">
+			<h2 class="section-title">General</h2>
+			<div class="project-item">Inbox</div>
+			<div class="project-item">Today</div>
+		</section>
+
+		<section id="projects-section">
+			<h2 class="section-title">Projects</h2>
+			<div class="project-list">
+				<div class="project-item">
+					<h3 class="project-name">Default</h3>
+					<span class="qtd-project">0</span>
+				</div>
+				<div class="project-item">
+					<h3 class="project-name">Other project</h3>
+					<span class="qtd-project">0</span>
+				</div>
+			</div>
+			<button id="add-project-btn">Add Project</button>
+		</section>
+
+		<section id="settings-section">
+			<button id="toggle-theme-btn">Toggle Theme</button>
+			<button id="about-btn">About</button>
+		</section>
+	</aside>
 </body>
 
 </html>
