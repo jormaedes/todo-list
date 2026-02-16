@@ -2,6 +2,7 @@ import "./style.css";
 
 const toggleThemeBtn = document.querySelector('#toggle-theme-btn');
 const aboutBtn = document.querySelector('#about-btn');
+const addProjectBtn = document.querySelector('#add-project-btn');
 
 toggleThemeBtn.addEventListener('click', ()=>{
 	const root = document.querySelector('body');
@@ -24,4 +25,16 @@ toggleThemeBtn.addEventListener('click', ()=>{
 aboutBtn.addEventListener('click', ()=>{
 	const dialogAbout = document.querySelector('#about-dialog');
 	dialogAbout.showModal();
+});
+
+
+const addTask = document.querySelector('#add-task-btn');
+addTask.addEventListener('click', ()=>{
+	const dialog = document.querySelector('#add-task-dialog');
+	dialog.showModal();
+});
+
+addProjectBtn.addEventListener('click', ()=> {
+	const dialog = document.querySelector('#add-project-dialog');
+	dialog.showModal();
 });

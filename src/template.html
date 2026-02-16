@@ -59,9 +59,9 @@
 			<button id="add-task-btn">+ Add Task</button>
 		</section>
 		<section id="tasks-container">
-			<div class="task-card" id="taskId">
+			<div class="task-card" data-task-id="taskId" data-priority="high" data-completed="true">
 				<div class="task-card-left">
-					<input type="checkbox">
+					<input type="checkbox" checked>
 					<div class="task-content">
 						<h3 class="task-title">Task 1</h3>
 						<p class="task-description">task1 description</p>
@@ -73,9 +73,9 @@
 				</span>
 			</div>
 
-			<div class="task-card finished" id="taskId">
+			<div class="task-card" data-task-id="taskId" data-priority="low" data-completed="false">
 				<div class="task-card-left">
-					<input type="checkbox" checked>
+					<input type="checkbox">
 					<div class="task-content">
 						<h3 class="task-title">Task 1</h3>
 						<p class="task-description">task1 description</p>
@@ -109,19 +109,32 @@
 		</form>
 	</dialog>
 
-	<dialog id="add-task-dialog" open>
+	<dialog id="add-task-dialog" >
 		<form method="dialog">
+			<span>Add Task</span>
 			<div class="property-container">
 				<label for="title-input">Title</label>
-				<input type="text" id="title-input">
+				<input type="text" id="title-input" required>
 			</div>
 			<div class="property-container">
-				<label for="description-input">Description</label>
+				<label for="description-input" required>Description</label>
 				<input type="text" id="description-input">
 			</div>
-			<div class="property-container">
-				<label for="duo-date-input">Duo Date</label>
-				<input type="date" id="duo-date-input">
+			<div class="date-container">
+				<label for="due-date-input">Due Date</label>
+				<input type="date" id="due-date-input" required>
+			</div>
+			<div class="priority-container">
+				<label for="priority-input">Priority</label>
+				<select name="proprity" id="proprity-input" data-priority="low">
+					<option value="low">low</option>
+					<option value="medium">medium</option>
+					<option value="high">high</option>
+				</select>
+			</div>
+			<div class="buttons-container">
+				<button id="cancel-add-task-btn">Cancel</button>
+				<button id="confirm-add-task-btn">Add</button>
 			</div>
 		</form>
 	</dialog>

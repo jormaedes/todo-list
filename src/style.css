@@ -224,16 +224,28 @@ body {
 	color: var(--text-secondary);
 }
 
-.task-card.finished {
+div[data-completed="true"] {
 	background: var(--bg-task-completed);
 }
 
-.task-card.finished {
+.task-card[data-priority="high"] {
+  border-left: 4px solid red;
+}
+
+.task-card[data-priority="medium"] {
+  border-left: 4px solid orange;
+}
+
+.task-card[data-priority="low"] {
+  border-left: 4px solid green;
+}
+
+div[data-completed="true"]   {
 	opacity: .6;
 }
 
-.task-card.finished .task-title,
-.task-card.finished .task-description{
+div[data-completed="true"] .task-title,
+div[data-completed="true"] .task-description{
 	text-decoration: line-through;
 }
 
@@ -280,13 +292,15 @@ dialog::backdrop {
 	background: var(--bg-secondary);
 }
 
-#add-project-dialog {
+#add-project-dialog,
+#add-task-dialog {
 	margin: auto;
 	border: none;
 	background: none;
 }
 
-#add-project-dialog form {
+#add-project-dialog form,
+#add-task-dialog  form {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -304,7 +318,8 @@ dialog::backdrop {
 	border: 1px solid var(--border-color);
 }
 
-#add-project-dialog form button {
+#add-project-dialog form button,
+#add-task-dialog > form button {
 	padding: 10px 20px;
 	border: none;
 	border-radius: 8px;
@@ -313,20 +328,83 @@ dialog::backdrop {
 	font-size: 16px;
 }
 
-#confirm-add-project-btn {
+#confirm-add-project-btn,
+#confirm-add-task-btn {
 	background: var(--accent-blue);
 	color: var(--text-primary);
 }
 
-#confirm-add-project-btn:hover {
+#confirm-add-project-btn:hover,
+#confirm-add-task-btn:hover {
 	background: var(--accent-blue-hover);
 }
 
-#cancel-add-project-btn {
+#cancel-add-project-btn,
+#cancel-add-task-btn {
 	background: var(--divider);
 	color: var(--text-primary);
 }
 
-#cancel-add-project-btn:hover {
+#cancel-add-project-btn:hover,
+#cancel-add-task-btn:hover {
 	background: var(--bg-selected);
+}
+
+#add-task-dialog > form {
+	color: var(--text-primary);
+}
+
+#add-task-dialog > form span {
+	font-weight: 900;
+	text-align: center;
+	font-size: 20px;
+}
+
+.property-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.property-container input[type=text] {
+	width: 300px;
+	height: 40px;
+	border: var(--border-color);
+	padding: 8px 16px;
+	border-radius: 8px;
+}
+
+.date-container,
+.priority-container {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	justify-content: space-between;
+}
+
+.date-container input[type=date] {
+	border-radius: 20px;
+	border: var(--border-color);
+	padding: 8px 16px;
+	width: 160px;
+}
+
+.priority-container select {
+	padding: 8px 16px;
+	border-radius: 16px;
+	border: none;
+	font-size: 17px;
+	color: #fff;
+}
+
+select[data-priority="low"]{
+	background-color: green;
+}
+
+select[data-priority="medium"]{
+	background-color: orange;
+}
+
+select[data-priority="high"]{
+	background-color: red;
 }
