@@ -86,11 +86,8 @@ class Render {
 		div.setAttribute('data-task-id', task.id);
 		div.setAttribute('data-priority', task.priority);
 		div.setAttribute('data-completed', task.checked);
-
-		const months = ["Jan", 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', "Dec"];
-		const date = new Date(task.dueDate);		
-		const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-
+		
+		const formattedDate = this._formatDate(task.dueDate);
 		div.innerHTML = `
 			<div class="task-card-left">
 				<input type="checkbox" class="task-checkbox" ${task.checked ? 'checked' : ''}>
@@ -105,6 +102,75 @@ class Render {
 			</span>
 		`;
 		return div;
+	}
+
+	updateTaskElement(taskId, task) {
+		const taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
+		if (!taskElement) return;
+
+		taskElement.setAttribute('data-priority', task.priority);
+		taskElement.setAttribute('data-completed', task.checked);
+
+		taskElement.querySelector('.task-title').textContent = task.title;
+		taskElement.querySelector('.task-description').textContent = task.description;
+		taskElement.querySelector('.task-checkbox').checked = task.checked;
+		
+		const formattedDate = this._formatDate(task.dueDate);
+		taskElement.querySelector('.task-date').innerHTML = `
+			<i class="ri-calendar-fill"></i>
+			${formattedDate}
+		`;
+	}
+
+	addTaskToDOM(task) {
+		const taskElement = this._createTaskElement(task);
+		this.tasksContainer.appendChild(taskElement);
+	}
+
+	removeTaskFromDOM(taskId) {
+		const taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
+		if (taskElement) {
+			taskElement.remove();
+		}
+	}
+
+	updateProjectCount(projectId, count) {
+		const projectElement = document.querySelector(`[data-project-id="${projectId}"]`);
+		if (!projectElement) return;
+
+		const countElement = projectElement.querySelector('.qtd-project');
+		if (countElement) {
+			countElement.textContent = count;
+		}
+	}
+
+	setActiveProject(projectId) {
+		document.querySelectorAll('.project-item').forEach(item => {
+			item.classList.remove('active-project');
+		});
+
+		const projectElement = document.querySelector(`[data-project-id="${projectId}"]`);
+		if (projectElement) {
+			projectElement.classList.add('active-project');
+		}
+	}
+
+	setActiveView(view) {
+		document.querySelectorAll('.project-item').forEach(item => {
+			item.classList.remove('active-project');
+		});
+
+		const viewElement = document.querySelector(`[data-view="${view}"]`);
+		if (viewElement) {
+			viewElement.classList.add('active-project');
+		}
+	}
+
+	_formatDate(dateString) {
+		const months = ["Jan", 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', "Dec"];
+		const date = new Date(dateString);		
+		const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+		return formattedDate;
 	}
 }
 
