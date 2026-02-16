@@ -1,4 +1,4 @@
-import ProjectManager from './project_manager.js';
+import ProjectManager from '../models/project_manager.js';
 
 class Storage {
 	static STORAGE_KEY = 'todoAppData';

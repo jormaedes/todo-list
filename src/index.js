@@ -1,4 +1,4 @@
-import "./style.css";
+import "./styles/style.css";
 
 const toggleThemeBtn = document.querySelector('#toggle-theme-btn');
 const aboutBtn = document.querySelector('#about-btn');
