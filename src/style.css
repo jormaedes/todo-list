@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root .light {
+body.light {
 	--bg-primary: #FFFFFF;
 	--bg-secondary: #F5F5F5;
 	--bg-task: #FFFFFF;
@@ -20,7 +20,7 @@
 	--checkbox-active: #5BA3F5;
 }
 
-:root .dark {
+body.dark {
 	--bg-primary: #1E1E1E;
 	--bg-secondary: #0D0D0D;
 	--bg-task: #2A2A2A;
