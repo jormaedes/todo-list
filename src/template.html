@@ -13,37 +13,24 @@
 		<section id="sidebar-container">
 			<section id="main-sidebar-content">
 				<h1 id="logo">To-Do List</h1>
+				
 				<section id="general-section">
 					<h2 class="section-title">General</h2>
-					<div class="project-item">
-						<i class="ri-inbox-fill"></i>
-						Inbox
-					</div>
-					<div class="project-item">
-						<i class="ri-calendar-fill"></i>
-						Today
-					</div>
+					<!-- JS vai preencher aqui -->
 				</section>
 
 				<section id="projects-section">
 					<h2 class="section-title">Projects</h2>
 					<div class="project-list">
-						<div class="project-item active-project">
-							<h3 class="project-name">Default</h3>
-							<span class="qtd-project">1</span>
-						</div>
-						<div class="project-item">
-							<h3 class="project-name">Other project</h3>
-							<span class="qtd-project">17</span>
-						</div>
+						<!-- JS vai preencher aqui -->
 					</div>
-					<button id="add-project-btn"> + Add Project</button>
+					<button id="add-project-btn">+ Add Project</button>
 				</section>
 			</section>
+			
 			<section id="settings-section">
 				<button id="toggle-theme-btn">
 					<i id="icon-toggle-theme" class="ri-moon-fill"></i>
-					<!-- <i class="ri-sun-fill"></i>  quando for pressionado-->
 					Toggle Theme
 				</button>
 				<button id="about-btn">
@@ -53,46 +40,23 @@
 			</section>
 		</section>
 	</aside>
+
 	<main id="main-content">
 		<section id="main-content-header">
-			<h2 id="main-title">Today</h2>
+			<h2 id="main-title">Inbox</h2>
 			<button id="add-task-btn">+ Add Task</button>
 		</section>
 		<section id="tasks-container">
-			<div class="task-card" data-task-id="taskId" data-priority="high" data-completed="true">
-				<div class="task-card-left">
-					<input type="checkbox" checked>
-					<div class="task-content">
-						<h3 class="task-title">Task 1</h3>
-						<p class="task-description">task1 description</p>
-					</div>
-				</div>
-				<span class="task-date">
-					<i class="ri-calendar-fill"></i>
-					Mar 15, 2026
-				</span>
-			</div>
-
-			<div class="task-card" data-task-id="taskId" data-priority="low" data-completed="false">
-				<div class="task-card-left">
-					<input type="checkbox">
-					<div class="task-content">
-						<h3 class="task-title">Task 1</h3>
-						<p class="task-description">task1 description</p>
-					</div>
-				</div>
-				<span class="task-date">
-					<i class="ri-calendar-fill"></i>
-					Mar 15, 2026
-				</span>
-			</div>
+			<!-- JS vai preencher aqui -->
 		</section>
 	</main>
+
+	<!-- Dialogs -->
 	<dialog id="about-dialog">
 		<form method="dialog" class="about-dialog-container">
 			<div id="copyright">
-				<p>Built by <a href="https://github.com/jormaedes" target="_blank">Jormaedes</a> as part of <a
-						href="https://www.theodinproject.com/" target="_blank">The Odin Project</a></p>
+				<p>Built by <a href="https://github.com/jormaedes" target="_blank">Jormaedes</a> as part of 
+					<a href="https://www.theodinproject.com/" target="_blank">The Odin Project</a></p>
 				<p>© 2026 all right reserved.</p>
 			</div>
 			<button id="close-info-btn">close</button>
@@ -101,15 +65,15 @@
 
 	<dialog id="add-project-dialog">
 		<form method="dialog">
-			<input type="text" id="name-project-input">
+			<input type="text" id="name-project-input" placeholder="Project name...">
 			<div class="buttons-container">
-				<button id="cancel-add-project-btn">Cancel</button>
-				<button id="confirm-add-project-btn">Add</button>
+				<button type="button" id="cancel-add-project-btn">Cancel</button>
+				<button type="submit" id="confirm-add-project-btn">Add</button>
 			</div>
 		</form>
 	</dialog>
 
-	<dialog id="add-task-dialog" >
+	<dialog id="add-task-dialog">
 		<form method="dialog">
 			<span>Add Task</span>
 			<div class="property-container">
@@ -117,7 +81,7 @@
 				<input type="text" id="title-input" required>
 			</div>
 			<div class="property-container">
-				<label for="description-input" required>Description</label>
+				<label for="description-input">Description</label>
 				<input type="text" id="description-input">
 			</div>
 			<div class="date-container">
@@ -127,18 +91,17 @@
 			<div class="priority-container">
 				<label for="priority-input">Priority</label>
 				<select name="priority" id="priority-input" data-priority="low">
-					<option value="low">low</option>
-					<option value="medium">medium</option>
-					<option value="high">high</option>
+					<option value="low">Low</option>
+					<option value="medium">Medium</option>
+					<option value="high">High</option>
 				</select>
 			</div>
 			<div class="buttons-container">
-				<button id="cancel-add-task-btn">Cancel</button>
-				<button id="confirm-add-task-btn">Add</button>
+				<button type="button" id="cancel-add-task-btn">Cancel</button>
+				<button type="submit" id="confirm-add-task-btn">Add</button>
 			</div>
 		</form>
 	</dialog>
-
 </body>
 
 </html>
