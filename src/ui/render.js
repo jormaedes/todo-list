@@ -62,6 +62,50 @@ class Render {
 		`;
 		return div;
 	}
+
+
+	// RENDERIZAR TASKS
+	renderTasks(tasks, title = 'Inbox') {
+		this.mainTitle.textContent = title;
+		this.tasksContainer.innerHTML = '';
+
+		if (tasks.length === 0) {
+			this.tasksContainer.innerHTML = '<p class="empty-message">No tasks yet. Add one!</p>';
+			return;
+		}
+
+		tasks.forEach(task => {
+			const taskElement = this._createTaskElement(task);
+			this.tasksContainer.appendChild(taskElement);
+		});
+	}
+
+	_createTaskElement(task) {
+		const div = document.createElement('div');
+		div.classList.add('task-card');
+		div.setAttribute('data-task-id', task.id);
+		div.setAttribute('data-priority', task.priority);
+		div.setAttribute('data-completed', task.checked);
+
+		const months = ["Jan", 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', "Dec"];
+		const date = new Date(task.dueDate);		
+		const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+		div.innerHTML = `
+			<div class="task-card-left">
+				<input type="checkbox" class="task-checkbox" ${task.checked ? 'checked' : ''}>
+				<div class="task-content">
+					<h3 class="task-title">${task.title}</h3>
+					<p class="task-description">${task.description}</p>
+				</div>
+			</div>
+			<span class="task-date">
+				<i class="ri-calendar-fill"></i>
+				${formattedDate}
+			</span>
+		`;
+		return div;
+	}
 }
 
 export default new Render();
