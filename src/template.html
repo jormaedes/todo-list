@@ -75,7 +75,7 @@
 
 			<div class="task-card finished" id="taskId">
 				<div class="task-card-left">
-					<input type="checkbox">
+					<input type="checkbox" checked>
 					<div class="task-content">
 						<h3 class="task-title">Task 1</h3>
 						<p class="task-description">task1 description</p>
@@ -98,6 +98,34 @@
 			<button id="close-info-btn">close</button>
 		</form>
 	</dialog>
+
+	<dialog id="add-project-dialog">
+		<form method="dialog">
+			<input type="text" id="name-project-input">
+			<div class="buttons-container">
+				<button id="cancel-add-project-btn">Cancel</button>
+				<button id="confirm-add-project-btn">Add</button>
+			</div>
+		</form>
+	</dialog>
+
+	<dialog id="add-task-dialog" open>
+		<form method="dialog">
+			<div class="property-container">
+				<label for="title-input">Title</label>
+				<input type="text" id="title-input">
+			</div>
+			<div class="property-container">
+				<label for="description-input">Description</label>
+				<input type="text" id="description-input">
+			</div>
+			<div class="property-container">
+				<label for="duo-date-input">Duo Date</label>
+				<input type="date" id="duo-date-input">
+			</div>
+		</form>
+	</dialog>
+
 </body>
 
 </html>

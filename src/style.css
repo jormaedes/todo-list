@@ -6,7 +6,7 @@
 	--bg-task: #FFFFFF;
 	--bg-task-completed: #E8E8E8;
 	--bg-hover: #E8E8E8;
-	--bg-selected: #E3F2FD;
+	--bg-selected: #C6E3F8;
 
 	--text-primary: #1A1A1A;
 	--text-secondary: #666666;
@@ -126,18 +126,20 @@ body {
 }
 
 #add-project-btn {
-	border: none;
+	outline: 1px dashed var(--divider);
 	cursor: pointer;
 	background: transparent;
 	color: var(--accent-blue);
 	font-size: 16px;
 	padding: 8px 16px;
 	border-radius: 8px;
+	border: none;
 }
 
 #add-project-btn:hover {
 	background: var(--checkbox-active);
 	color: var(--text-primary);
+	outline: none;
 }
 
 #settings-section {
@@ -243,6 +245,10 @@ dialog#about-dialog {
 	border-radius: 10px;
 }
 
+dialog::backdrop {
+	background: rgba(0, 0, 0, .5);
+}
+
 .about-dialog-container {
 	display: flex;
 	gap: 20px;
@@ -272,4 +278,55 @@ dialog#about-dialog {
 
 .about-dialog-container #close-info-btn:hover {
 	background: var(--bg-secondary);
+}
+
+#add-project-dialog {
+	margin: auto;
+	border: none;
+	background: none;
+}
+
+#add-project-dialog form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 20px;
+	background: var(--bg-secondary);
+	font-size: 18px;
+	border-radius: 10px;
+}
+
+#add-project-dialog form > input {
+	height: 40px;
+	width: 300px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	border: 1px solid var(--border-color);
+}
+
+#add-project-dialog form button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+#confirm-add-project-btn {
+	background: var(--accent-blue);
+	color: var(--text-primary);
+}
+
+#confirm-add-project-btn:hover {
+	background: var(--accent-blue-hover);
+}
+
+#cancel-add-project-btn {
+	background: var(--divider);
+	color: var(--text-primary);
+}
+
+#cancel-add-project-btn:hover {
+	background: var(--bg-selected);
 }
