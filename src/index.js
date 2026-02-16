@@ -1,6 +1,7 @@
 import './styles/style.css';
 import Storage from './utils/storage.js';
 import render from './ui/render.js';
+import events from './ui/events.js';
 
 class App {
 	constructor() {
@@ -12,6 +13,7 @@ class App {
 		console.log('Iniciando aplicação...');
 		this.loadData();
 		this.renderInitialUI();
+		events.init();
 	}
 
 	loadData() {
