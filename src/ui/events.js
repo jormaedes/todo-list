@@ -32,6 +32,13 @@ class Events {
 		});
 
 		document.querySelector('.project-list').addEventListener('click', (e) => {
+			if (e.target.closest('.delete-project-item')) {
+				const projectItem = e.target.closest('.project-item');
+				const projectId = projectItem.getAttribute('data-project-id');
+				this.handleDeleteProject(projectId);
+				return;
+			}
+			
 			const item = e.target.closest('.project-item');
 			if (!item) return;
 
@@ -42,6 +49,7 @@ class Events {
 		document.querySelector('#add-project-btn').addEventListener('click', () => {
 			this.openAddProjectDialog();
 		});
+
 	}
 
 	setupTaskEvents() {
@@ -51,45 +59,45 @@ class Events {
 
 		document.querySelector('#tasks-container').addEventListener('click', (e) => {
 			const taskCard = e.target.closest('.task-card');
-        	if (!taskCard) return;
-			
+			if (!taskCard) return;
+
 			const taskId = taskCard.getAttribute('data-task-id');
-			
+
 			if (e.target.classList.contains('task-checkbox')) {
 				this.handleToggleTask(taskId);
-				return ;
+				return;
 			}
 
 			if (e.target.closest('.edit-task-item')) {
 				console.log(taskId);
 				this.openEditTaskDialog(taskId);
-				return ;
+				return;
 			}
 		});
 	}
 
 	openEditTaskDialog(taskId) {
-        let task = null;
-        for (const project of app.projectManager.projects) {
-            task = project.getTaskById(taskId);
-            if (task) break;
-        }
+		let task = null;
+		for (const project of app.projectManager.projects) {
+			task = project.getTaskById(taskId);
+			if (task) break;
+		}
 
-        if (!task) return;
+		if (!task) return;
 
-        this.currentEditTaskId = taskId;
+		this.currentEditTaskId = taskId;
 
-        document.querySelector('#edit-title-input').value = task.title;
-        document.querySelector('#edit-description-input').value = task.description;
-        document.querySelector('#edit-due-date-input').value = task.dueDate;
+		document.querySelector('#edit-title-input').value = task.title;
+		document.querySelector('#edit-description-input').value = task.description;
+		document.querySelector('#edit-due-date-input').value = task.dueDate;
 
-        const prioritySelect = document.querySelector('#edit-priority-input');
-        prioritySelect.value = task.priority;
-        prioritySelect.setAttribute('edit-data-priority', task.priority);
+		const prioritySelect = document.querySelector('#edit-priority-input');
+		prioritySelect.value = task.priority;
+		prioritySelect.setAttribute('edit-data-priority', task.priority);
 
-        this.editTaskDialog.showModal();
-        document.querySelector('#edit-title-input').focus();
-    }
+		this.editTaskDialog.showModal();
+		document.querySelector('#edit-title-input').focus();
+	}
 
 	setupDialogEvents() {
 		const projectForm = this.addProjectDialog.querySelector('form');
@@ -98,7 +106,7 @@ class Events {
 		document.querySelector('#confirm-add-project-btn').addEventListener('click', (e) => {
 			e.preventDefault();
 			const projectName = projectInput.value.trim();
-			
+
 			if (projectName) {
 				this.handleAddProject(projectName);
 				projectInput.value = '';
@@ -115,7 +123,7 @@ class Events {
 
 		document.querySelector('#confirm-add-task-btn').addEventListener('click', (e) => {
 			e.preventDefault();
-			
+
 			const title = document.querySelector('#title-input').value.trim();
 			const description = document.querySelector('#description-input').value.trim();
 			const dueDate = document.querySelector('#due-date-input').value;
@@ -147,66 +155,66 @@ class Events {
 		});
 
 		// editar task
-        const editTaskForm = this.editTaskDialog.querySelector('form');
-        const editPrioritySelect = document.querySelector('#edit-priority-input');
+		const editTaskForm = this.editTaskDialog.querySelector('form');
+		const editPrioritySelect = document.querySelector('#edit-priority-input');
 
 
-        editPrioritySelect.addEventListener('change', (e) => {
-            e.target.setAttribute('data-priority', e.target.value);
-        });
+		editPrioritySelect.addEventListener('change', (e) => {
+			e.target.setAttribute('data-priority', e.target.value);
+		});
 
-        // Botão save-edit
-        document.querySelector('#confirm-edit-task-btn').addEventListener('click', (e) => {
-            e.preventDefault();
+		// Botão save-edit
+		document.querySelector('#confirm-edit-task-btn').addEventListener('click', (e) => {
+			e.preventDefault();
 
-            const title = document.querySelector('#edit-title-input').value.trim();
-            const description = document.querySelector('#edit-description-input').value.trim();
-            const dueDate = document.querySelector('#edit-due-date-input').value;
-            const priority = document.querySelector('#edit-priority-input').value;
+			const title = document.querySelector('#edit-title-input').value.trim();
+			const description = document.querySelector('#edit-description-input').value.trim();
+			const dueDate = document.querySelector('#edit-due-date-input').value;
+			const priority = document.querySelector('#edit-priority-input').value;
 
-            if (title && dueDate) {
-                this.handleEditTask(this.currentEditTaskId, {
-                    title,
-                    description,
-                    dueDate,
-                    priority
-                });
-                editTaskForm.reset();
-                this.editTaskDialog.close();
-                this.currentEditTaskId = null;
-            }
-        });
+			if (title && dueDate) {
+				this.handleEditTask(this.currentEditTaskId, {
+					title,
+					description,
+					dueDate,
+					priority
+				});
+				editTaskForm.reset();
+				this.editTaskDialog.close();
+				this.currentEditTaskId = null;
+			}
+		});
 
-        // Botão cancelar o edit
-        document.querySelector('#cancel-edit-task-btn').addEventListener('click', () => {
-            editTaskForm.reset();
-            this.editTaskDialog.close();
-            this.currentEditTaskId = null;
-        });
+		// Botão cancelar o edit
+		document.querySelector('#cancel-edit-task-btn').addEventListener('click', () => {
+			editTaskForm.reset();
+			this.editTaskDialog.close();
+			this.currentEditTaskId = null;
+		});
 	}
 
 	handleEditTask(taskId, newData) {
-        let task = null;
-        for (const project of app.projectManager.projects) {
-            task = project.getTaskById(taskId);
-            if (task) break;
-        }
+		let task = null;
+		for (const project of app.projectManager.projects) {
+			task = project.getTaskById(taskId);
+			if (task) break;
+		}
 
-        if (!task) {
-            console.error('Task not found:', taskId);
-            return;
-        }
+		if (!task) {
+			console.error('Task not found:', taskId);
+			return;
+		}
 
-        task.title = newData.title;
-        task.description = newData.description;
-        task.dueDate = newData.dueDate;
-        task.priority = newData.priority;
+		task.title = newData.title;
+		task.description = newData.description;
+		task.dueDate = newData.dueDate;
+		task.priority = newData.priority;
 
-        Storage.save(app.projectManager);
+		Storage.save(app.projectManager);
 
-        render.updateTaskElement(taskId, task);
-        console.log('Task edited:', task.title);
-    }
+		render.updateTaskElement(taskId, task);
+		console.log('Task edited:', task.title);
+	}
 
 	setupThemeEvents() {
 		document.querySelector('#toggle-theme-btn').addEventListener('click', () => {
@@ -216,7 +224,7 @@ class Events {
 
 	handleAddProject(name) {
 		const newProject = app.projectManager.addProject(name);
-		
+
 		if (!newProject) {
 			alert('Failed to create project');
 			return;
@@ -293,9 +301,38 @@ class Events {
 		console.log('Task toggled:', task.title, '→', task.checked);
 	}
 
+
+	handleDeleteProject(projectId) {
+		const inboxId = app.projectManager.projects[0].id;
+		if (projectId === inboxId) {
+			alert('The Inbox project cannot be deleted!');
+			return;
+		}
+
+		const project = app.projectManager.getProjectById(projectId);
+		if (!confirm(`Delete project "${project.name}"? All tasks will be lost.`)) return;
+
+		if (app.projectManager.currentProject.id === projectId)
+		{
+			app.projectManager.currentProjectId = app.projectManager.projects[0].id;
+			app.showInbox();
+		}
+
+		app.projectManager.deleteProject(projectId);
+
+		Storage.save(app.projectManager);
+
+		render.renderProjects(
+			app.projectManager.projects,
+			app.projectManager.currentProject.id
+		);
+
+		console.log('Project deleted:', project.name);
+	}
+
 	handleDeleteTask(taskId) {
 		let projectWithTask = null;
-		
+
 		for (const project of app.projectManager.projects) {
 			if (project.getTaskById(taskId)) {
 				projectWithTask = project;

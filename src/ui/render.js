@@ -41,7 +41,7 @@ class Render {
 
 		projects.forEach(project => {
 			const projectElement = this._createProjectElement(project);
-
+			if (project.name == 'Inbox') return ;
 			if (project.id === currentProjectId) {
 				projectElement.classList.add('active-project');
 			}
