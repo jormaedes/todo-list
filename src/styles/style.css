@@ -55,6 +55,10 @@ body {
 	color: var(--text-primary);
 }
 
+button {
+	font-family: 'Roboto', sans-serif;
+}
+
 #sidebar {
 	background: var(--bg-secondary);
 	min-width: 250px;
