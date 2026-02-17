@@ -124,7 +124,8 @@ body {
 	gap: 8px;
 }
 
-.project-item .info-project > button {
+.project-item .info-project > button,
+.task-card-right button {
 	background: none;
 	color: var(--text-primary);
 	border: none;
@@ -133,9 +134,14 @@ body {
 	border-radius: 4px;
 }
 
-.project-item .info-project > button:hover {
-	background: var(--accent-blue-hover);
+.project-item .info-project > button:hover,
+.task-card-right button:hover {
+	background: red;
 	color: var(--bg-secondary);
+}
+
+.task-card-right button {
+	font-size: 16px;
 }
 
 .project-item  .qtd-project {
@@ -231,6 +237,9 @@ body {
 	justify-content: space-between;
 }
 
+
+
+.task-card-right,
 .task-card-left {
 	display: flex;
 	align-items: center;

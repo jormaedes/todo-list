@@ -101,10 +101,15 @@ class Render {
 					<p class="task-description">${task.description}</p>
 				</div>
 			</div>
-			<span class="task-date">
-				<i class="ri-calendar-fill"></i>
-				${formattedDate}
-			</span>
+			<div class="task-card-right">
+				<span class="task-date">
+					<i class="ri-calendar-fill"></i>
+					${formattedDate}
+				</span>
+				<button class="delete-task-item" title="delete task">
+					<i class="ri-delete-bin-fill"></i>
+				</button>
+			</div>
 		`;
 		return div;
 	}
