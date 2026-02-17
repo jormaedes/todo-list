@@ -6,7 +6,7 @@ A clean and functional task management application built with vanilla JavaScript
 
 ## 🔴 Live Demo
 
-> 🚧 **Coming soon** — will be available via GitHub Pages once deployed.
+https://jormaedes.github.io/todo-list/
 
 ---
 
