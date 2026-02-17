@@ -166,20 +166,19 @@ body {
 }
 
 #add-project-btn {
-	outline: 1px dashed var(--divider);
+	border: 1px dashed var(--divider);
 	cursor: pointer;
 	background: transparent;
 	color: var(--accent-blue);
 	font-size: 16px;
 	padding: 8px 16px;
 	border-radius: 8px;
-	border: none;
 }
 
 #add-project-btn:hover {
 	background: var(--checkbox-active);
 	color: var(--text-primary);
-	outline: none;
+	border: 1px dashed var(--checkbox-active);
 }
 
 #settings-section {
