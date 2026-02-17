@@ -58,7 +58,12 @@ class Render {
 
 		div.innerHTML = `
 			<h3 class="project-name">${project.name}</h3>
-			<span class="qtd-project">${taskCount}</span>
+			<div class="info-project">
+				<span class="qtd-project">${taskCount}</span>
+				<button class="delete-project-item" title="delete project">
+					<i class="ri-delete-bin-fill"></i>
+				</button>
+			</div>
 		`;
 		return div;
 	}

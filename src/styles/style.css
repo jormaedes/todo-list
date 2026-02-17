@@ -117,7 +117,28 @@ body {
 	gap: 10px;
 }
 
-.project-item > .qtd-project {
+.project-item .info-project {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
+}
+
+.project-item .info-project > button {
+	background: none;
+	color: var(--text-primary);
+	border: none;
+	padding: 4px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.project-item .info-project > button:hover {
+	background: var(--accent-blue-hover);
+	color: var(--bg-secondary);
+}
+
+.project-item  .qtd-project {
 	background: var(--bg-hover);
 	padding: 2px 6px;
 	border-radius: 10px;
