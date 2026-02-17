@@ -105,7 +105,6 @@ class Events {
 	}
 
 	setupDialogEvents() {
-		const projectForm = this.addProjectDialog.querySelector('form');
 		const projectInput = document.querySelector('#name-project-input');
 
 		document.querySelector('#confirm-add-project-btn').addEventListener('click', (e) => {
