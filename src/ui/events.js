@@ -38,7 +38,7 @@ class Events {
 				this.handleDeleteProject(projectId);
 				return;
 			}
-			
+
 			const item = e.target.closest('.project-item');
 			if (!item) return;
 
@@ -71,6 +71,11 @@ class Events {
 			if (e.target.closest('.edit-task-item')) {
 				console.log(taskId);
 				this.openEditTaskDialog(taskId);
+				return;
+			}
+
+			if (e.target.closest('.delete-task-item')) {
+				this.handleDeleteTask(taskId);
 				return;
 			}
 		});
@@ -312,8 +317,7 @@ class Events {
 		const project = app.projectManager.getProjectById(projectId);
 		if (!confirm(`Delete project "${project.name}"? All tasks will be lost.`)) return;
 
-		if (app.projectManager.currentProject.id === projectId)
-		{
+		if (app.projectManager.currentProject.id === projectId) {
 			app.projectManager.currentProjectId = app.projectManager.projects[0].id;
 			app.showInbox();
 		}
@@ -331,6 +335,8 @@ class Events {
 	}
 
 	handleDeleteTask(taskId) {
+		if (!confirm('Are you sure you want to delete this task?')) return;
+
 		let projectWithTask = null;
 
 		for (const project of app.projectManager.projects) {

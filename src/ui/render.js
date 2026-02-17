@@ -137,6 +137,8 @@ class Render {
 
 	addTaskToDOM(task) {
 		const taskElement = this._createTaskElement(task);
+		if (this.tasksContainer.innerHTML == '<p class="empty-message">No tasks yet. Add one!</p>')
+			this.tasksContainer.innerHTML = '';
 		this.tasksContainer.appendChild(taskElement);
 	}
 
