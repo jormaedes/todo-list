@@ -125,7 +125,8 @@ body {
 }
 
 .project-item .info-project > button,
-.task-card-right button {
+.task-card-right button.delete-task-item,
+.task-card-right button.edit-task-item {
 	background: none;
 	color: var(--text-primary);
 	border: none;
@@ -135,12 +136,17 @@ body {
 }
 
 .project-item .info-project > button:hover,
-.task-card-right button:hover {
+.task-card-right button.delete-task-item:hover {
 	background: red;
 	color: var(--bg-secondary);
 }
 
-.task-card-right button {
+.task-card-right button.edit-task-item:hover {
+	color: var(--accent-blue);
+}
+
+.task-card-right button,
+.task-card-right button.edit-task-item {
 	font-size: 16px;
 }
 

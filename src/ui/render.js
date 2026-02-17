@@ -106,6 +106,9 @@ class Render {
 					<i class="ri-calendar-fill"></i>
 					${formattedDate}
 				</span>
+				<button class="edit-task-item" title="edit task">
+					<i class="ri-edit-box-fill"></i>
+				</button>
 				<button class="delete-task-item" title="delete task">
 					<i class="ri-delete-bin-fill"></i>
 				</button>
