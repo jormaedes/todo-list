@@ -329,14 +329,16 @@ dialog::backdrop {
 }
 
 #add-project-dialog,
-#add-task-dialog {
+#add-task-dialog,
+#edit-task-dialog {
 	margin: auto;
 	border: none;
 	background: none;
 }
 
 #add-project-dialog form,
-#add-task-dialog  form {
+#add-task-dialog  form,
+#edit-task-dialog form {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -355,7 +357,8 @@ dialog::backdrop {
 }
 
 #add-project-dialog form button,
-#add-task-dialog > form button {
+#add-task-dialog > form button,
+#edit-task-dialog form button {
 	padding: 10px 20px;
 	border: none;
 	border-radius: 8px;
@@ -365,32 +368,38 @@ dialog::backdrop {
 }
 
 #confirm-add-project-btn,
-#confirm-add-task-btn {
+#confirm-add-task-btn,
+#confirm-edit-task-btn {
 	background: var(--accent-blue);
 	color: var(--text-primary);
 }
 
 #confirm-add-project-btn:hover,
-#confirm-add-task-btn:hover {
+#confirm-add-task-btn:hover,
+#confirm-edit-task-btn:hover {
 	background: var(--accent-blue-hover);
 }
 
 #cancel-add-project-btn,
-#cancel-add-task-btn {
+#cancel-add-task-btn,
+#cancel-edit-task-btn {
 	background: var(--divider);
 	color: var(--text-primary);
 }
 
 #cancel-add-project-btn:hover,
-#cancel-add-task-btn:hover {
+#cancel-add-task-btn:hover,
+#cancel-edit-task-btn:hover {
 	background: var(--bg-selected);
 }
 
-#add-task-dialog > form {
+#add-task-dialog > form,
+#edit-task-dialog > form {
 	color: var(--text-primary);
 }
 
-#add-task-dialog > form span {
+#add-task-dialog > form span,
+#edit-task-dialog > form span {
 	font-weight: 900;
 	text-align: center;
 	font-size: 20px;

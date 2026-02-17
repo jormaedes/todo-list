@@ -7,13 +7,15 @@ class Events {
 		this.addProjectDialog = document.querySelector('#add-project-dialog');
 		this.addTaskDialog = document.querySelector('#add-task-dialog');
 		this.aboutDialog = document.querySelector('#about-dialog');
+		this.currentEditTaskId = null;
+		this.editTaskDialog = document.querySelector('#edit-task-dialog');
 	}
 
 	init() {
+		this.setupThemeEvents();
 		this.setupSidebarEvents();
 		this.setupTaskEvents();
 		this.setupDialogEvents();
-		this.setupThemeEvents();
 	}
 
 	setupSidebarEvents() {
@@ -48,20 +50,46 @@ class Events {
 		});
 
 		document.querySelector('#tasks-container').addEventListener('click', (e) => {
+			const taskCard = e.target.closest('.task-card');
+        	if (!taskCard) return;
+			
+			const taskId = taskCard.getAttribute('data-task-id');
+			
 			if (e.target.classList.contains('task-checkbox')) {
-				const taskCard = e.target.closest('.task-card');
-				const taskId = taskCard.getAttribute('data-task-id');
 				this.handleToggleTask(taskId);
+				return ;
 			}
 
-			if (e.target.closest('.task-card') && !e.target.classList.contains('task-checkbox')) {
-				const taskCard = e.target.closest('.task-card');
-				const taskId = taskCard.getAttribute('data-task-id');
-				console.log('Task clicked:', taskId);
+			if (e.target.closest('.edit-task-item')) {
+				console.log(taskId);
+				this.openEditTaskDialog(taskId);
+				return ;
 			}
 		});
 	}
 
+	openEditTaskDialog(taskId) {
+        let task = null;
+        for (const project of app.projectManager.projects) {
+            task = project.getTaskById(taskId);
+            if (task) break;
+        }
+
+        if (!task) return;
+
+        this.currentEditTaskId = taskId;
+
+        document.querySelector('#edit-title-input').value = task.title;
+        document.querySelector('#edit-description-input').value = task.description;
+        document.querySelector('#edit-due-date-input').value = task.dueDate;
+
+        const prioritySelect = document.querySelector('#edit-priority-input');
+        prioritySelect.value = task.priority;
+        prioritySelect.setAttribute('edit-data-priority', task.priority);
+
+        this.editTaskDialog.showModal();
+        document.querySelector('#edit-title-input').focus();
+    }
 
 	setupDialogEvents() {
 		const projectForm = this.addProjectDialog.querySelector('form');
@@ -117,7 +145,68 @@ class Events {
 		document.querySelector('#close-info-btn').addEventListener('click', () => {
 			this.aboutDialog.close();
 		});
+
+		// editar task
+        const editTaskForm = this.editTaskDialog.querySelector('form');
+        const editPrioritySelect = document.querySelector('#edit-priority-input');
+
+
+        editPrioritySelect.addEventListener('change', (e) => {
+            e.target.setAttribute('data-priority', e.target.value);
+        });
+
+        // Botão save-edit
+        document.querySelector('#confirm-edit-task-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const title = document.querySelector('#edit-title-input').value.trim();
+            const description = document.querySelector('#edit-description-input').value.trim();
+            const dueDate = document.querySelector('#edit-due-date-input').value;
+            const priority = document.querySelector('#edit-priority-input').value;
+
+            if (title && dueDate) {
+                this.handleEditTask(this.currentEditTaskId, {
+                    title,
+                    description,
+                    dueDate,
+                    priority
+                });
+                editTaskForm.reset();
+                this.editTaskDialog.close();
+                this.currentEditTaskId = null;
+            }
+        });
+
+        // Botão cancelar o edit
+        document.querySelector('#cancel-edit-task-btn').addEventListener('click', () => {
+            editTaskForm.reset();
+            this.editTaskDialog.close();
+            this.currentEditTaskId = null;
+        });
 	}
+
+	handleEditTask(taskId, newData) {
+        let task = null;
+        for (const project of app.projectManager.projects) {
+            task = project.getTaskById(taskId);
+            if (task) break;
+        }
+
+        if (!task) {
+            console.error('Task not found:', taskId);
+            return;
+        }
+
+        task.title = newData.title;
+        task.description = newData.description;
+        task.dueDate = newData.dueDate;
+        task.priority = newData.priority;
+
+        Storage.save(app.projectManager);
+
+        render.updateTaskElement(taskId, task);
+        console.log('Task edited:', task.title);
+    }
 
 	setupThemeEvents() {
 		document.querySelector('#toggle-theme-btn').addEventListener('click', () => {
