@@ -114,6 +114,7 @@ The app follows a clear separation of concerns:
 - [ ] **Search bar** — Filter tasks in real time by title and description
 - [ ] **Filter buttons** — Filter tasks by due date, or by completion status (completed / not completed)
 - [ ] **Task counters** — Display the number of completed vs pending tasks per project and in total
+- [ ] **Responsive** - Make the app responsive
 
 ---
 
