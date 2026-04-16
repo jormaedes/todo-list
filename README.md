@@ -124,4 +124,4 @@ Built by [Jormaedes](https://github.com/jormaedes) as part of [The Odin Project]
 
 ---
 
-*Last updated: February 2026*
+*Last updated: April 2026*
