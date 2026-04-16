@@ -485,3 +485,39 @@ select[data-priority="high"]{
     z-index: 998;
     transition: opacity 0.3s ease;
 }
+
+
+@media (max-width: 768px) {
+    body {
+        display: block; /* Remove o grid de duas colunas */
+    }
+
+    #menu-mobile-btn {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    #sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        width: 280px;
+        transform: translateX(-100%); /* Esconde à esquerda */
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transição suave */
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    }
+
+    /* Classe que o JS vai ativar */
+    #sidebar.active {
+        transform: translateX(0);
+    }
+
+    #sidebar-overlay.active {
+        display: block;
+    }
+
+    #main-content {
+        padding: 15px;
+    }
+}
