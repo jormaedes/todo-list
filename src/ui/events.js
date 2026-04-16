@@ -16,6 +16,30 @@ class Events {
 		this.setupSidebarEvents();
 		this.setupTaskEvents();
 		this.setupDialogEvents();
+		this.setupMobileMenuEvents();
+	}
+
+	setupMobileMenuEvents() {
+		const menuBtn = document.querySelector('#menu-mobile-btn');
+		const sidebar = document.querySelector('#sidebar');
+		const overlay = document.querySelector('#sidebar-overlay');
+
+		const toggleMenu = () => {
+			sidebar.classList.toggle('active');
+			overlay.classList.toggle('active');
+		};
+
+		menuBtn.addEventListener('click', toggleMenu);
+		overlay.addEventListener('click', toggleMenu);
+
+		// Fechar o menu ao clicar em qualquer item da sidebar (Inbox, Projetos, etc)
+		sidebar.addEventListener('click', (e) => {
+			if (e.target.closest('.project-item') || e.target.closest('button')) {
+				if (window.innerWidth <= 768) {
+					toggleMenu();
+				}
+			}
+		});
 	}
 
 	setupSidebarEvents() {
